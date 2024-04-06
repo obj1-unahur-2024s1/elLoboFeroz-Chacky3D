@@ -5,7 +5,7 @@ object loboFeroz{
 		return peso.between(20, 150)
 	}
 	
-	method modificarPeso(cantidadDeUnidades){
+	method aumentarPeso(cantidadDeUnidades){
 		peso = peso + cantidadDeUnidades
 	}
 	
@@ -18,14 +18,14 @@ object loboFeroz{
 	}
 	
 	method correrHaciaUnLugar(){
-		peso = peso - 1
+		peso = 0.max(peso - 1)
 	}
 	
 	method soplar(resistenciaDeLaCasa, pesoDelChanchito){
 		var cantidadDeChanchitos = 1
 		cantidadDeChanchitos = cantidadDeChanchitos + if(resistenciaDeLaCasa > 0) 1 else 0
 		cantidadDeChanchitos = cantidadDeChanchitos + if(resistenciaDeLaCasa > 5) 1 else 0
-		peso = peso - (resistenciaDeLaCasa + pesoDelChanchito * cantidadDeChanchitos)
+		peso = 0.max(peso - (resistenciaDeLaCasa + pesoDelChanchito * cantidadDeChanchitos))
 	}
 }
 
@@ -51,8 +51,8 @@ object canastaConManzanas{
 	const pesoDeCadaManzana = 0.2
 	var cantidadDeManzanas = 6
 	
-	method modificarCantidadDeManzanas(numero){
-		cantidadDeManzanas = cantidadDeManzanas + numero
+	method disminuirCantidadDeManzanas(numero){
+		cantidadDeManzanas = cantidadDeManzanas - numero
 	}
 	
 	method obtenerPesoDeLaCanasta(){
@@ -79,7 +79,7 @@ object casaDeMadera{
 }
 
 object casaDeLadrillo{
-	const cantidadDeLadrillos = 15
+	var cantidadDeLadrillos = 15
 	
 	method obtenerResistencia(){
 		return cantidadDeLadrillos * 2
